@@ -26,7 +26,7 @@ def generate_recursive_hue(hue_size: int):
 
 def draw_rect(color: Tuple[int, int, int], pos: Tuple[int, int], size: Tuple[int, int]):
     rect = (pos[0], pos[1], pos[0] + size[0], pos[1] + size[1])
-
+    # color = (255, 0, 0)
     pygame.draw.rect(screen, color, rect)
 
 
@@ -42,13 +42,14 @@ def main():
         hue = next(hue_iterator)
         print(f"{hue}, ", end="")
         rgb_color = colorsys.hsv_to_rgb(hue / 360, 50 / 100, 50 / 100)
-        adj_rgb = ([elem * 2 for elem in rgb_color])
+        adj_rgb = ([elem * 255 for elem in rgb_color])
 
         pos = (i * size[0], 0)
 
         draw_rect(adj_rgb, pos, size)
-    pygame.display.flip()
+
     while True:
+        pygame.display.flip()
         for event in pygame.event.get():  # User did something
             if event.type == pygame.QUIT:  # If user clicked close
                 return  # Flag that we are done so we exit this loop
