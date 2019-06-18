@@ -1,12 +1,12 @@
-from typing import Tuple
 import colorsys
+from typing import Tuple
 
 import pygame
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-n_rects_to_compare = 20
+n_rects_to_compare = 9
 
 
 def generate_recursive_hue(hue_size: int):
@@ -41,7 +41,7 @@ def main():
     for i in range(n_rects_to_compare):
         hue = next(hue_iterator)
         print(f"{hue}, ", end="")
-        rgb_color = colorsys.hsv_to_rgb(hue / 360, 50 / 100, 50 / 100)
+        rgb_color = colorsys.hsv_to_rgb(hue / 360, 0.8, 0.8)
         adj_rgb = ([elem * 255 for elem in rgb_color])
 
         pos = (i * size[0], 0)
